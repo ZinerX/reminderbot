@@ -6,12 +6,15 @@ const bot_secret_token = "Nzk0MTYzMDI5OTE3ODI3MTE0.X-2z9Q.WyM16r4rJDz6aAqsfTy64Y
 client.on('ready', () => {
     console.log("Connected as " + client.user.tag)
 
-    let scheduledMessage = new cron.CronJob('45 07 14 * * *', () => {
+    let scheduledMessage1 = new cron.CronJob('45 07 14 * * *', () => {
         // This runs every day at 10:00:00
         let channel = client.channels.cache.get('794163238425722881');
         channel.send('You message');
-
-        
+    });
+    let scheduledMessage2 = new cron.CronJob('00 00 22 * * *', () => {
+        // This runs every day at 10:00:00
+        let channel = client.channels.cache.get('794163238425722881');
+        channel.send('You message');
     });
     scheduledMessage.start()
 });
