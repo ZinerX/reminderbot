@@ -15,7 +15,7 @@ client.on('ready', () => {
         channel.send(msgmorning);
     });
     let scheduledMessage2 = new cron.CronJob('00 00 22 * * *', () => {
-        // This runs every day at 10:00:00
+        // This runs every day at 22:00:00
         let channel = client.channels.cache.get('794163238425722881');
         channel.send(msgevening);
     });
