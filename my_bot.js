@@ -12,12 +12,12 @@ client.on('ready', () => {
     let scheduledMessage1 = new cron.CronJob('00 00 10 * * *', () => {
         // This runs every day at 10:00:00
         let channel = client.channels.cache.get('794163238425722881');
-        channel.send(msgmorning);
+        channel.send(msgevening);
     });
     let scheduledMessage2 = new cron.CronJob('00 00 22 * * *', () => {
         // This runs every day at 22:00:00
         let channel = client.channels.cache.get('794163238425722881');
-        channel.send(msgevening);
+        channel.send(msgmorning);
     });
     scheduledMessage1.start()
     scheduledMessage2.start()
@@ -36,7 +36,7 @@ client.on('ready', () => {
 
             collector.on('collect', (reaction, user) => {
                 console.log(`Collected ${reaction.emoji.name} from ${user.tag}`);
-                if (user.tag === 'Quibby#3159'){channel.send('Response received! Have a good day/night!')}
+                if (user.tag === 'Quibby#3159'){channel.send('Response received! Have a good day/night cutie!')}
             });
             
             collector.on('end', (collected, user) => {
@@ -55,7 +55,7 @@ client.on('ready', () => {
 
             collector.on('collect', (reaction, user) => {
                 console.log(`Collected ${reaction.emoji.name} from ${user.tag}`);
-                if (user.tag === 'Quibby#3159'){channel.send('response received!')}
+                if (user.tag === 'Quibby#3159'){channel.send('response received! Have a good day/night cutie!')}
             });
             
             collector.on('end', (collected, user) => {
