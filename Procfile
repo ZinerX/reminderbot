@@ -1,0 +1,1 @@
+worker my_bot.js
