@@ -60,7 +60,7 @@ client.on('ready', () => {
             
             collector.on('end', (collected, user) => {
                 console.log(`Collected ${collected.size} items`);
-                if (collected.size === 0) {channel.send('No responses, I will remind you in another 15 minutes~')}
+                if (collected.size === 0) {channel.send(noresponses)}
             });
         }) 
         }//second if ends here
