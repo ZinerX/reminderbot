@@ -1,9 +1,5 @@
 {
-<<<<<<< HEAD
   "name": "estrogenreminders",
-=======
-  "name": "estrogenreminder",
->>>>>>> f172d6461981f8d32891894382abc5a91f0cac65
   "version": "1.0.0",
   "description": "",
   "main": "my_bot.js",
