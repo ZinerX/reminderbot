@@ -5,6 +5,7 @@ const bot_secret_token = "Nzk0MTYzMDI5OTE3ODI3MTE0.X-2z9Q.WyM16r4rJDz6aAqsfTy64Y
 const msgmorning = 'Good morning! It\'s now time to take your estrogen~ <@234108953297027073>, Click the 👍 emote if you have done so owo'
 const msgevening = 'Good evening! It\'s now time to take your estrogen~ <@234108953297027073>, Click the 👍 emote if you have done so owo'
 const noresponses = 'No responses, I will remind you in another 30 minutes~ <@234108953297027073> Click the 👍 emote if you have taken your estrogen owo'
+var timedecider = 0
 //794163238425722881
 client.on('ready', () => {
     console.log("Connected as " + client.user.tag)
@@ -12,11 +13,13 @@ client.on('ready', () => {
     let scheduledMessage1 = new cron.CronJob('00 00 10 * * *', () => {
         // This runs every day at 10:00:00
         let channel = client.channels.cache.get('794163238425722881');
+        timedecider = 2
         channel.send(msgevening);
     });
     let scheduledMessage2 = new cron.CronJob('00 00 22 * * *', () => {
         // This runs every day at 22:00:00
         let channel = client.channels.cache.get('794163238425722881');
+        timedecider = 1
         channel.send(msgmorning);
     });
     scheduledMessage1.start()
@@ -36,12 +39,17 @@ client.on('ready', () => {
 
             collector.on('collect', (reaction, user) => {
                 console.log(`Collected ${reaction.emoji.name} from ${user.tag}`);
-                if (user.tag === 'Quibby#3159'){channel.send('Response received! Have a good day/night cutie!')}
+                if (user.tag === 'Quibby#3159' && timedecider === 1){channel.send('Response received! Have a good day cutie!')}
+                if (user.tag === 'Quibby#3159' && timedecider === 2){channel.send('Response received! Have a good evening cutie!')}
             });
             
             collector.on('end', (collected, user) => {
                 console.log(`Collected ${collected.size} items`);
-                if (collected.size === 0) {channel.send(noresponses)}
+                if (collected.size === 0) {
+                    channel.send(noresponses)
+                    .then(() => {
+                    message.reactions.removeAll().catch(error => console.error('Failed to clear reactions: ', error))})
+                }
             });
         }) 
     }; //first if ends here
@@ -55,12 +63,17 @@ client.on('ready', () => {
 
             collector.on('collect', (reaction, user) => {
                 console.log(`Collected ${reaction.emoji.name} from ${user.tag}`);
-                if (user.tag === 'Quibby#3159'){channel.send('response received!')}
+                if (user.tag === 'Quibby#3159' && timedecider === 1){channel.send('Response received! Have a good day cutie!')}
+                if (user.tag === 'Quibby#3159' && timedecider === 2){channel.send('Response received! Have a good evening cutie!')}
             });
             
             collector.on('end', (collected, user) => {
                 console.log(`Collected ${collected.size} items`);
-                if (collected.size === 0) {channel.send(noresponses)}
+                if (collected.size === 0) {
+                    channel.send(noresponses)
+                    .then(() => {
+                    message.reactions.removeAll().catch(error => console.error('Failed to clear reactions: ', error))})
+                }
             });
         }) 
         }//second if ends here
