@@ -12,12 +12,12 @@ client.on('ready', () => {
     let scheduledMessage1 = new cron.CronJob('00 00 10 * * *', () => {
         // This runs every day at 10:00:00
         let channel = client.channels.cache.get('794163238425722881');
-        channel.send(msgmorning);
+        channel.send(msgevening);
     });
     let scheduledMessage2 = new cron.CronJob('00 00 22 * * *', () => {
         // This runs every day at 22:00:00
         let channel = client.channels.cache.get('794163238425722881');
-        channel.send(msgevening);
+        channel.send(msgmorning);
     });
     scheduledMessage1.start()
     scheduledMessage2.start()
