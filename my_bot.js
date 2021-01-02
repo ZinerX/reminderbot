@@ -31,7 +31,7 @@ client.on('ready', () => {
             message.react('👍')
             .then(() => {
             const filter = (reaction) => (reaction.emoji.name === '👍')
-            const collector = message.createReactionCollector(filter, { time: 900000 });
+            const collector = message.createReactionCollector(filter, { time: 1800000 });
             
 
             collector.on('collect', (reaction, user) => {
@@ -50,7 +50,7 @@ client.on('ready', () => {
             message.react('👍')
             .then(() => {
             const filter = (reaction) => (reaction.emoji.name === '👍')
-            const collector = message.createReactionCollector(filter, { time: 900000 });
+            const collector = message.createReactionCollector(filter, { time: 1800000 });
             
 
             collector.on('collect', (reaction, user) => {
