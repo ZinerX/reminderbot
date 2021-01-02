@@ -4,7 +4,7 @@ const cron = require('cron')
 const bot_secret_token = "Nzk0MTYzMDI5OTE3ODI3MTE0.X-2z9Q.WyM16r4rJDz6aAqsfTy64YpkXUM";
 const msgmorning = 'Good morning! It\'s now time to take your estrogen~ <@234108953297027073>, Click the 👍 emote if you have done so owo'
 const msgevening = 'Good evening! It\'s now time to take your estrogen~ <@234108953297027073>, Click the 👍 emote if you have done so owo'
-const noresponses = 'No responses, I will remind you in another 15 minutes~ <@234108953297027073> Click the 👍 emote if you have taken your estrogen owo'
+const noresponses = 'No responses, I will remind you in another 30 minutes~ <@234108953297027073> Click the 👍 emote if you have taken your estrogen owo'
 //794163238425722881
 client.on('ready', () => {
     console.log("Connected as " + client.user.tag)
