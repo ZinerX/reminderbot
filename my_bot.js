@@ -36,7 +36,7 @@ client.on('ready', () => {
 
             collector.on('collect', (reaction, user) => {
                 console.log(`Collected ${reaction.emoji.name} from ${user.tag}`);
-                if (user.tag === 'Quibby#3159'){channel.send('Response received! Have a good day/night!')}
+                if (user.tag === 'Quibby#3159'){channel.send('Response received! Have a good day/night cutie!')}
             });
             
             collector.on('end', (collected, user) => {
