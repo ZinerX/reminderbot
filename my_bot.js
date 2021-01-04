@@ -33,7 +33,7 @@ client.on('ready', () => {
         if (message.content === msgmorning || message.content === msgevening ) {
             message.react('👍')
             .then(() => {
-            const filter = (reaction) => (reaction.emoji.name === '👍' && user.id == '234108953297027073')
+            const filter = (reaction) => (reaction.emoji.name === '👍')
             const collector = message.createReactionCollector(filter, { time: 1800000 });
             
 
@@ -57,7 +57,7 @@ client.on('ready', () => {
         if (message.content === noresponses){
             message.react('👍')
             .then(() => {
-            const filter = (reaction) => (reaction.emoji.name === '👍' && user.id == '234108953297027073')
+            const filter = (reaction) => (reaction.emoji.name === '👍')
             const collector = message.createReactionCollector(filter, { time: 1800000 });
             
 
