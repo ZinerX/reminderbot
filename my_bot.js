@@ -27,7 +27,7 @@ client.on('ready', () => {
         // This runs every day at 14:00:00
         let channel = client.channels.cache.get('794163238425722881');
         timedecider = 1
-        channel.send("daily reminder!!! attention all of you!!! i am here to say that <@234108953297027073> is cute! very cute!!!");
+        channel.send("I'm back! Try to deny me once more you cutie <@234108953297027073>");
     });
     scheduledMessage1.start()
     scheduledMessage2.start()
