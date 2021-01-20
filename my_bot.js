@@ -23,21 +23,12 @@ client.on('ready', () => {
         timedecider = 1
         channel.send(msgmorning);
     });
-    let scheduledMessage3 = new cron.CronJob('00 32 23 * * *', () => {
+    let scheduledMessage3 = new cron.CronJob('00 50 23 * * *', () => {
         // This runs every day at 14:00:00
         let channel = client.channels.cache.get('794163238425722881');
         timedecider = 1
         channel.send("I'm back! Try to deny me once more you cutie <@234108953297027073>")
-        .then(() => {
-            const collector = message.createReactionCollector(filter, { time: 1800000 });
-            collector.on('collect', (reaction, user) => {
-                console.log(`Collected ${reaction.emoji.name} from ${user.tag}`);
-                if (user.tag === 'Quibby#3159'){channel.send(cutethingy[Math.floor(Math.random() * 4)])}
-            })
-            collector.on('end', (collected, user) => {
-                console.log(`Collected ${collected.size} items`);
-            });
-        })
+        
     });
     scheduledMessage1.start()
     scheduledMessage2.start()
@@ -47,7 +38,27 @@ client.on('ready', () => {
 
     client.on('message', message => {
         let channel = client.channels.cache.get('794163238425722881');
-        if ((message.content.toLowerCase().includes("no") || message.content.toLowerCase().includes("deny") || message.content.toLowerCase().includes("false")) && (message.author.id === "234108953297027073")) {
+        if (message.content === "I'm back! Try to deny me once more you cutie <@234108953297027073>" ){
+            const collector = message.createReactionCollector(filter, { time: 1800000 });
+            collector.on('collect', (reaction, user) => {
+                console.log(`Collected ${reaction.emoji.name} from ${user.tag}`);
+                if (user.tag === 'Quibby#3159'){channel.send(cutethingy[Math.floor(Math.random() * 4)])}
+            })
+            collector.on('end', (collected, user) => {
+                console.log(`Collected ${collected.size} items`);
+            });       
+    }
+        if (message.content === cutethingy[0] || message.content === cutethingy[1] || message.content === cutethingy[2] || message.content === cutethingy[3]){
+            const collector = message.createReactionCollector(filter, { time: 1800000 });
+            collector.on('collect', (reaction, user) => {
+                console.log(`Collected ${reaction.emoji.name} from ${user.tag}`);
+                if (user.tag === 'Quibby#3159'){channel.send(cutethingy[Math.floor(Math.random() * 4)])}
+            })
+            collector.on('end', (collected, user) => {
+                console.log(`Collected ${collected.size} items`);
+            });   
+        }    
+        if ((message.content.toLowerCase().includes("no") || message.content.toLowerCase().includes("deny") || message.content.toLowerCase().includes("false") || message.content.toLowerCase().includes("n't") || message.content.toLowerCase().includes(":x:")) && (message.author.id === "234108953297027073")) {
             channel.send(cutethingy[Math.floor(Math.random() * 4)])
             .then(() => {
             const collector = message.createReactionCollector(filter, { time: 1800000 });
