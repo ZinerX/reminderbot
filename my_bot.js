@@ -23,7 +23,7 @@ client.on('ready', () => {
         timedecider = 1
         channel.send(msgmorning);
     });
-    let scheduledMessage3 = new cron.CronJob('00 24 23 * * *', () => {
+    let scheduledMessage3 = new cron.CronJob('00 32 23 * * *', () => {
         // This runs every day at 14:00:00
         let channel = client.channels.cache.get('794163238425722881');
         timedecider = 1
@@ -34,6 +34,9 @@ client.on('ready', () => {
                 console.log(`Collected ${reaction.emoji.name} from ${user.tag}`);
                 if (user.tag === 'Quibby#3159'){channel.send(cutethingy[Math.floor(Math.random() * 4)])}
             })
+            collector.on('end', (collected, user) => {
+                console.log(`Collected ${collected.size} items`);
+            });
         })
     });
     scheduledMessage1.start()
@@ -52,6 +55,9 @@ client.on('ready', () => {
                 console.log(`Collected ${reaction.emoji.name} from ${user.tag}`);
                 if (user.tag === 'Quibby#3159'){channel.send(cutethingy[Math.floor(Math.random() * 4)])}
             })
+            collector.on('end', (collected, user) => {
+                console.log(`Collected ${collected.size} items`);
+            });
         })
         };
         //check if message is the one i want to react to
