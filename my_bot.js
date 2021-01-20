@@ -23,11 +23,18 @@ client.on('ready', () => {
         timedecider = 1
         channel.send(msgmorning);
     });
-    let scheduledMessage3 = new cron.CronJob('00 13 23 * * *', () => {
+    let scheduledMessage3 = new cron.CronJob('00 21 23 * * *', () => {
         // This runs every day at 14:00:00
         let channel = client.channels.cache.get('794163238425722881');
         timedecider = 1
-        channel.send("I'm back! Try to deny me once more you cutie <@234108953297027073>");
+        channel.send("I'm back! Try to deny me once more you cutie <@234108953297027073>")
+        .then(() => {
+            const collector = message.createReactionCollector(filter, { time: 1800000 });
+            collector.on('collect', (reaction, user) => {
+                console.log(`Collected ${reaction.emoji.name} from ${user.tag}`);
+                if (user.tag === 'Quibby#3159'){channel.send(cutethingy[Math.floor(Math.random() * 4)])}
+            })
+        })
     });
     scheduledMessage1.start()
     scheduledMessage2.start()
@@ -39,11 +46,13 @@ client.on('ready', () => {
         let channel = client.channels.cache.get('794163238425722881');
         if ((message.content.toLowerCase().includes("no") || message.content.toLowerCase().includes("deny")) && (message.author.id === "234108953297027073")) {
             channel.send(cutethingy[Math.floor(Math.random() * 4)])
+            .then(() => {
             const collector = message.createReactionCollector(filter, { time: 1800000 });
             collector.on('collect', (reaction, user) => {
                 console.log(`Collected ${reaction.emoji.name} from ${user.tag}`);
                 if (user.tag === 'Quibby#3159'){channel.send(cutethingy[Math.floor(Math.random() * 4)])}
             })
+        })
         };
         //check if message is the one i want to react to
         if (message.content === msgmorning || message.content === msgevening ) {
