@@ -44,7 +44,7 @@ client.on('ready', () => {
 
     client.on('message', message => {
         let channel = client.channels.cache.get('794163238425722881');
-        if ((message.content.toLowerCase().includes("no") || message.content.toLowerCase().includes("deny")) && (message.author.id === "234108953297027073")) {
+        if ((message.content.toLowerCase().includes("no") || message.content.toLowerCase().includes("deny") || message.content.toLowerCase().includes("false")) && (message.author.id === "234108953297027073")) {
             channel.send(cutethingy[Math.floor(Math.random() * 4)])
             .then(() => {
             const collector = message.createReactionCollector(filter, { time: 1800000 });
