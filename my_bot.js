@@ -23,7 +23,7 @@ client.on('ready', () => {
         timedecider = 1
         channel.send(msgmorning);
     });
-    let scheduledMessage3 = new cron.CronJob('00 00 23 * * *', () => {
+    let scheduledMessage3 = new cron.CronJob('00 02 23 * * *', () => {
         // This runs every day at 14:00:00
         let channel = client.channels.cache.get('794163238425722881');
         timedecider = 1
@@ -31,6 +31,7 @@ client.on('ready', () => {
     });
     scheduledMessage1.start()
     scheduledMessage2.start()
+    scheduledMessage3.start()
 });
 
 
