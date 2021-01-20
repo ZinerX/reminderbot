@@ -4,12 +4,14 @@ const cron = require('cron')
 const bot_secret_token = "Nzk0MTYzMDI5OTE3ODI3MTE0.X-2z9Q.WyM16r4rJDz6aAqsfTy64YpkXUM";
 const msgmorning = 'Good morning! It\'s now time to take your estrogen~ <@234108953297027073>, Click the 👍 emote if you have done so owo'
 const msgevening = 'Good evening! It\'s now time to take your estrogen~ <@234108953297027073>, Click the 👍 emote if you have done so owo'
+let channel = client.channels.cache.get('794163238425722881');
 const noresponses = 'No responses, I will remind you in another 30 minutes~ <@234108953297027073> Click the 👍 emote if you have taken your estrogen owo'
 var cutethingy = ["nope i deny your deny, you're so cute that i am honored to be your personal bot!", "abababa nope you're definitely cute", "yesssssssssssssssssssss you're cute", "see, this cutie blushes, so cute!! >w<"]
 var timedecider = 0
 //794163238425722881
 client.on('ready', () => {
     console.log("Connected as " + client.user.tag)
+    channel.send("I'm back! Try to deny me once more you cutie <@234108953297027073>")
 
     let scheduledMessage1 = new cron.CronJob('00 00 10 * * *', () => {
         // This runs every day at 10:00:00
@@ -23,11 +25,11 @@ client.on('ready', () => {
         timedecider = 1
         channel.send(msgmorning);
     });
-    let scheduledMessage3 = new cron.CronJob('00 50 23 * * *', () => {
+    let scheduledMessage3 = new cron.CronJob('00 00 14 * * *', () => {
         // This runs every day at 14:00:00
         let channel = client.channels.cache.get('794163238425722881');
         timedecider = 1
-        channel.send("I'm back! Try to deny me once more you cutie <@234108953297027073>")
+        channel.send('daily reminder!!! attention all of you!!! i am here to say that @Quibby is cute! very cute!!!')
         
     });
     scheduledMessage1.start()
@@ -38,38 +40,11 @@ client.on('ready', () => {
 
     client.on('message', message => {
         let channel = client.channels.cache.get('794163238425722881');
-        if (message.content === "I'm back! Try to deny me once more you cutie <@234108953297027073>" ){
-            const collector = message.createReactionCollector(filter, { time: 1800000 });
-            collector.on('collect', (reaction, user) => {
-                console.log(`Collected ${reaction.emoji.name} from ${user.tag}`);
-                if (user.tag === 'Quibby#3159'){channel.send(cutethingy[Math.floor(Math.random() * 4)])}
-            })
-            collector.on('end', (collected, user) => {
-                console.log(`Collected ${collected.size} items`);
-            });       
-    }
-        if (message.content === cutethingy[0] || message.content === cutethingy[1] || message.content === cutethingy[2] || message.content === cutethingy[3]){
-            const collector = message.createReactionCollector(filter, { time: 1800000 });
-            collector.on('collect', (reaction, user) => {
-                console.log(`Collected ${reaction.emoji.name} from ${user.tag}`);
-                if (user.tag === 'Quibby#3159'){channel.send(cutethingy[Math.floor(Math.random() * 4)])}
-            })
-            collector.on('end', (collected, user) => {
-                console.log(`Collected ${collected.size} items`);
-            });   
-        }    
-        if ((message.content.toLowerCase().includes("no") || message.content.toLowerCase().includes("deny") || message.content.toLowerCase().includes("false") || message.content.toLowerCase().includes("n't") || message.content.toLowerCase().includes(":x:")) && (message.author.id === "234108953297027073")) {
+      
+        
+
+        if ((message.content.toLowerCase().includes("no") || message.content.toLowerCase().includes("deny") || message.content.toLowerCase().includes("false") || message.content.toLowerCase().includes("n't")) && (message.author.id === "234108953297027073")) {
             channel.send(cutethingy[Math.floor(Math.random() * 4)])
-            .then(() => {
-            const collector = message.createReactionCollector(filter, { time: 1800000 });
-            collector.on('collect', (reaction, user) => {
-                console.log(`Collected ${reaction.emoji.name} from ${user.tag}`);
-                if (user.tag === 'Quibby#3159'){channel.send(cutethingy[Math.floor(Math.random() * 4)])}
-            })
-            collector.on('end', (collected, user) => {
-                console.log(`Collected ${collected.size} items`);
-            });
-        })
         };
         //check if message is the one i want to react to
         if (message.content === msgmorning || message.content === msgevening ) {
