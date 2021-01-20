@@ -23,7 +23,7 @@ client.on('ready', () => {
         timedecider = 1
         channel.send(msgmorning);
     });
-    let scheduledMessage3 = new cron.CronJob('00 02 23 * * *', () => {
+    let scheduledMessage3 = new cron.CronJob('00 00 14 * * *', () => {
         // This runs every day at 14:00:00
         let channel = client.channels.cache.get('794163238425722881');
         timedecider = 1
@@ -37,7 +37,7 @@ client.on('ready', () => {
 
     client.on('message', message => {
         let channel = client.channels.cache.get('794163238425722881');
-        if ((message.content.includes("no") || message.content.includes("deny")) && (message.author.id === "234108953297027073")) {
+        if ((message.content.toLowerCase().includes("no") || message.content.toLowerCase().includes("deny")) && (message.author.id === "234108953297027073")) {
             channel.send(cutethingy[Math.floor(Math.random() * 4)])
         };
         //check if message is the one i want to react to
