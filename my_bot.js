@@ -14,7 +14,6 @@ var feeded = false
 //794163238425722881
 client.on('ready', () => {
     console.log("Connected as " + client.user.tag)
-    channel.send("I'm back! Try to deny me once more you cutie <@234108953297027073>")
 
     let scheduledMessage1 = new cron.CronJob('00 00 10 * * *', () => {
         // This runs every day at 10:00:00
