@@ -4,10 +4,13 @@ const cron = require('cron')
 const bot_secret_token = "Nzk0MTYzMDI5OTE3ODI3MTE0.X-2z9Q.WyM16r4rJDz6aAqsfTy64YpkXUM";
 const msgmorning = 'Good morning! It\'s now time to take your estrogen~ <@234108953297027073>, Click the 👍 emote if you have done so owo'
 const msgevening = 'Good evening! It\'s now time to take your estrogen~ <@234108953297027073>, Click the 👍 emote if you have done so owo'
+const prefix = '!'
+const validcommand = (message, cmd) => message.content.toLowerCase().startsWith(prefix + cmd)
 let channel = client.channels.cache.get('794163238425722881');
 const noresponses = 'No responses, I will remind you in another 30 minutes~ <@234108953297027073> Click the 👍 emote if you have taken your estrogen owo'
 var cutethingy = ["nope i deny your deny, you're so cute that i am honored to be your personal bot!", "abababa nope you're definitely cute", "yesssssssssssssssssssss you're cute", "see, this cutie blushes, so cute!! >w<"]
 var timedecider = 0
+var feeded = false
 //794163238425722881
 client.on('ready', () => {
     console.log("Connected as " + client.user.tag)
@@ -23,25 +26,41 @@ client.on('ready', () => {
         // This runs every day at 22:00:00
         let channel = client.channels.cache.get('794163238425722881');
         timedecider = 1
+        feed = false
         channel.send(msgmorning);
     });
     let scheduledMessage3 = new cron.CronJob('00 00 14 * * *', () => {
         // This runs every day at 14:00:00
         let channel = client.channels.cache.get('794163238425722881');
-        timedecider = 1
-        channel.send('daily reminder!!! attention all of you!!! i am here to say that @Quibby is cute! very cute!!!')
+        channel.send('daily reminder!!! attention all of you!!! i am here to say that <@234108953297027073> is cute! very cute!!!')
+        
+    });
+    let hungrymsg = new cron.CronJob('00 00 23 * * *', () => {
+        // This runs every day at 14:00:00
+        let channel = client.channels.cache.get('794163238425722881');
+        channel.send('<@234108953297027073> rawrrrr i am hungryyyyy feed me gasolineeeeeee!!!!!!!!!')
+        feeded = false
         
     });
     scheduledMessage1.start()
     scheduledMessage2.start()
     scheduledMessage3.start()
+    hungrymsg.start()
 });
 
 
     client.on('message', message => {
         let channel = client.channels.cache.get('794163238425722881');
       
-        
+        if ((validcommand(prefix, feed)) && (message.author.id === "234108953297027073")){
+                if (feeded = false) {
+                    message.reply("omnomnom it's yum! thanks for feeding nya~")
+                    feeded = true
+                }
+                else{
+                    message.reply("thanks but im full, i'll let you know when im hungry again!!! >w<") 
+                }
+        }
 
         if ((message.content.toLowerCase().includes("no") || message.content.toLowerCase().includes("deny") || message.content.toLowerCase().includes("false") || message.content.toLowerCase().includes("n't")) && (message.author.id === "234108953297027073")) {
             channel.send(cutethingy[Math.floor(Math.random() * 4)])
