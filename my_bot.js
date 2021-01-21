@@ -50,10 +50,10 @@ client.on('ready', () => {
 
     client.on('message', message => {
         let channel = client.channels.cache.get('794163238425722881');
-        if ((validcommand(prefix, poke)) && (message.author.id === "234108953297027073")){
+        if ((validcommand(prefix, "poke")) && (message.author.id === "234108953297027073")){
             message.reply("myon!! who poked me!!! *looks around* <@234108953297027073> was that you???")
         }
-        if ((validcommand(prefix, feed)) && (message.author.id === "234108953297027073")){
+        if ((validcommand(prefix, "feed")) && (message.author.id === "234108953297027073")){
                 if (feeded = false) {
                     message.reply("omnomnom it's yum! thanks for feeding nya~")
                     feeded = true
