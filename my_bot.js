@@ -61,7 +61,7 @@ const checkMessageContains = () => {
 };
 
 client.on('message', (message) => {
-  if (message.channel.id !== '792053531384610860') return;
+  if (message.channel.id !== '794163238425722881') return;
   if (message.author.bot) return;
   if (message.content === cutereminder) {
     const collector = message.createReactionCollector(filter, { time: 1800000 });
