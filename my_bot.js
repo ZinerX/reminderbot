@@ -2,12 +2,14 @@ const Discord = require('discord.js')
 const client = new Discord.Client()
 const cron = require('cron')
 const bot_secret_token = "Nzk0MTYzMDI5OTE3ODI3MTE0.X-2z9Q.WyM16r4rJDz6aAqsfTy64YpkXUM";
-const msgmorning = 'Good morning! It\'s now time to take your estrogen~ <@234108953297027073>, Click the 👍 emote if you have done so owo'
-const msgevening = 'Good evening! It\'s now time to take your estrogen~ <@234108953297027073>, Click the 👍 emote if you have done so owo'
+const msgmorning = 'Good morning <@234108953297027073>! Can I have a pat myon? A morning pat would make me happy!'
+const msgevening = 'Good evening <@234108953297027073>! How was your day? If you are tired, take a rest~'
+const responseday = 'myon~~~~ have a good day cutie!'
+const responsenight = 'ababa you are cute! Have a good evening cutie!'
 const prefix = '!'
 //const validcommand = (message, cmd) => message.content.toLowerCase().startsWith(prefix + cmd)
 let channel = client.channels.cache.get('794163238425722881');
-const noresponses = 'No responses, I will remind you in another 30 minutes~ <@234108953297027073> Click the 👍 emote if you have taken your estrogen owo'
+const noresponses = 'ababababa notice me myonmyonmyon~'
 var cutethingy = ["nope i deny your deny, you're so cute that i am honored to be your personal bot!", "abababa nope you're definitely cute", "yesssssssssssssssssssss you're cute", "see, this cutie blushes, so cute!! >w<"]
 var timedecider = 0
 var feeded = false
@@ -74,8 +76,8 @@ client.on('ready', () => {
             const collector = message.createReactionCollector(filter, { time: 1800000 });
             collector.on('collect', (reaction, user) => {
                 console.log(`Collected ${reaction.emoji.name} from ${user.tag}`);
-                if (user.tag === 'Quibby#3159' && timedecider === 1){channel.send('Response received! Have a good day cutie!')}
-                if (user.tag === 'Quibby#3159' && timedecider === 2){channel.send('Response received! Have a good evening cutie!')}
+                if (user.tag === 'Quibby#3159' && timedecider === 1){channel.send(responseday)}
+                if (user.tag === 'Quibby#3159' && timedecider === 2){channel.send(responsenight)}
             });
             
             collector.on('end', (collected, user) => {
@@ -98,8 +100,8 @@ client.on('ready', () => {
 
             collector.on('collect', (reaction, user) => {
                 console.log(`Collected ${reaction.emoji.name} from ${user.tag}`);
-                if (user.tag === 'Quibby#3159' && timedecider === 1){channel.send('Response received! Have a good day cutie!')}
-                if (user.tag === 'Quibby#3159' && timedecider === 2){channel.send('Response received! Have a good evening cutie!')}
+                if (user.tag === 'Quibby#3159' && timedecider === 1){channel.send(responseday)}
+                if (user.tag === 'Quibby#3159' && timedecider === 2){channel.send(responsenight)}
             });
             
             collector.on('end', (collected, user) => {
