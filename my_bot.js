@@ -86,68 +86,64 @@ client.on('message', (message) => {
   }
 
   // FUNCTION LOOP HERE
-  if (message.content.toLowerCase().includes('no') || message.content.toLowerCase().includes('deny') || message.content.toLowerCase().includes('false') || message.content.toLowerCase().includes("n't") || message.content.toLowerCase().includes(':x:')) {
+  if ((message.content.toLowerCase().includes('no') || message.content.toLowerCase().includes('deny') || message.content.toLowerCase().includes('false') || message.content.toLowerCase().includes("n't") || message.content.toLowerCase().includes(':x:')) && (message.author.id === "234108953297027073") ) {
     checkMessageContains();
   }
 
   // check if message is the one i want to react to
   if (message.content === msgmorning || message.content === msgevening) {
     message.react('👍')
-      .then((newMessage) => {
-        const collector = newMessage.createReactionCollector(filter, { time: 1800000 });
-        collector.on('collect', (reaction, user) => {
-          console.log(`Collected ${reaction.emoji.name} from ${user.tag}`);
-          if (user.tag === 'Quibby#3159' && timedecider === 1) { channel.send(responseday); }
-          if (user.tag === 'Quibby#3159' && timedecider === 2) { channel.send(responsenight); }
-        });
-
-        collector.on('end', (collected, user) => {
-          console.log(`Collected ${collected.size} items`);
-          if (collected.size === 0) {
-            channel.send(noresponses)
-              .then(() => {
-                message.reactions.removeAll().catch((error) => console.error('Failed to clear reactions: ', error));
-              });
-          }
-        });
+    .then((newMessage) => {
+      const collector = newMessage.createReactionCollector(filter, { time: 1800000 });
+      collector.on('collect', (reaction, user) => {
+        console.log(`Collected ${reaction.emoji.name} from ${user.tag}`);
+        if (user.tag === 'Quibby#3159' && timedecider === 1) { channel.send(responseday); }
+        if (user.tag === 'Quibby#3159' && timedecider === 2) { channel.send(responsenight); }
       });
+      collector.on('end', (collected, user) => {
+        console.log(`Collected ${collected.size} items`);
+        if (collected.size === 0) {
+           channel.send(noresponses)
+          .then(() => {
+            message.reactions.removeAll().catch((error) => console.error('Failed to clear reactions: ', error));
+          });
+        }
+      });
+    });
   } // first if ends here
 
   if (message.content === noresponses) {
     message.react('👍')
-      .then(() => {
-        const collector = message.createReactionCollector(filter, { time: 1800000 });
-
-        collector.on('collect', (reaction, user) => {
-          console.log(`Collected ${reaction.emoji.name} from ${user.tag}`);
-          if (user.tag === 'Quibby#3159' && timedecider === 1) { channel.send(responseday); }
-          if (user.tag === 'Quibby#3159' && timedecider === 2) { channel.send(responsenight); }
-        });
-
-        collector.on('end', (collected, user) => {
-          console.log(`Collected ${collected.size} items`);
-          if (collected.size === 0) {
-            channel.send(noresponses)
-              .then(() => {
-                message.reactions.removeAll().catch((error) => console.error('Failed to clear reactions: ', error));
-              });
-          }
-        });
+    .then((newMessage) => {
+      const collector = newMessage.createReactionCollector(filter, { time: 1800000 });
+      collector.on('collect', (reaction, user) => {
+        console.log(`Collected ${reaction.emoji.name} from ${user.tag}`);
+        if (user.tag === 'Quibby#3159' && timedecider === 1) { channel.send(responseday); }
+        if (user.tag === 'Quibby#3159' && timedecider === 2) { channel.send(responsenight); }
       });
+      collector.on('end', (collected, user) => {
+        console.log(`Collected ${collected.size} items`);
+        if (collected.size === 0) {
+           channel.send(noresponses)
+          .then(() => {
+            message.reactions.removeAll().catch((error) => console.error('Failed to clear reactions: ', error));
+          });
+        }
+      });
+    });
   }// second if ends here
 
   if ((message.content.startsWith(prefix + "poke")) && (message.author.id === "234108953297027073")){
     message.reply("myon!! who poked me!!! *looks around* <@234108953297027073> was that you???")
-}
-if ((message.content.startsWith(prefix + "feed")) && (message.author.id === "234108953297027073")){
-        if (feeded = false) {
-            message.reply("omnomnom it's yum! thanks for feeding nya~")
-            .then(() => feeded = true)
-        }
-        else{
-            message.reply("thanks but im full, i'll let you know when im hungry again!!! >w<") 
-        }
-}
+  }
+
+  if ((message.content.startsWith(prefix + "feed")) && (message.author.id === "234108953297027073")){
+    if (feeded = false) {
+      message.reply("omnomnom it's yum! thanks for feeding nya~")
+      .then(() => feeded = true)
+    }
+    else message.reply("thanks but im full, i'll let you know when im hungry again!!! >w<")      
+  }
 
 });
 
