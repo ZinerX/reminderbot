@@ -6,7 +6,7 @@ const cron = require('cron');
 
 // IMPORT RESPONSES
 const {
-  msgmorning, msgevening, noresponses, cutethingy, cutereminder
+  msgmorning, msgevening, noresponses, cutethingy, cutereminder, responseday, responsenight, hungry,
 } = require('./responses');
 
 const botSecretToken = 'Nzk0MTYzMDI5OTE3ODI3MTE0.X-2z9Q.WyM16r4rJDz6aAqsfTy64YpkXUM';
@@ -28,14 +28,14 @@ client.on('ready', async () => {
     timedecider = 1;
     channel.send(msgmorning);
   });
-  const scheduledMessage3 = new cron.CronJob('00 01 01 * * *', () => {
+  const scheduledMessage3 = new cron.CronJob('00 06 01 * * *', () => {
     // This runs every day at 14:00:00
     timedecider = 1;
     channel.send(cutereminder);
   });
   let hungrymsg = new cron.CronJob('00 00 23 * * *', () => {
     // This runs every day at 14:00:00
-    channel.send(cutereminder)
+    channel.send(hungry)
     feeded = false
   });
   scheduledMessage1.start();
@@ -63,7 +63,7 @@ const checkMessageContains = () => {
 client.on('message', (message) => {
   if (message.channel.id !== '792053531384610860') return;
   if (message.author.bot) return;
-  if ((message.content === "I'm back! Try to deny me once more you cutie <@234108953297027073>") ||(message.content === cutereminder)) {
+  if (message.content === cutereminder) {
     const collector = message.createReactionCollector(filter, { time: 1800000 });
     collector.on('collect', (reaction, user) => {
       console.log(`Collected ${reaction.emoji.name} from ${user.tag}`);
@@ -97,8 +97,8 @@ client.on('message', (message) => {
         const collector = newMessage.createReactionCollector(filter, { time: 1800000 });
         collector.on('collect', (reaction, user) => {
           console.log(`Collected ${reaction.emoji.name} from ${user.tag}`);
-          if (user.tag === 'Quibby#3159' && timedecider === 1) { channel.send('Response received! Have a good day cutie!'); }
-          if (user.tag === 'Quibby#3159' && timedecider === 2) { channel.send('Response received! Have a good evening cutie!'); }
+          if (user.tag === 'Quibby#3159' && timedecider === 1) { channel.send(responseday); }
+          if (user.tag === 'Quibby#3159' && timedecider === 2) { channel.send(responsenight); }
         });
 
         collector.on('end', (collected, user) => {
@@ -120,8 +120,8 @@ client.on('message', (message) => {
 
         collector.on('collect', (reaction, user) => {
           console.log(`Collected ${reaction.emoji.name} from ${user.tag}`);
-          if (user.tag === 'Quibby#3159' && timedecider === 1) { channel.send('Response received! Have a good day cutie!'); }
-          if (user.tag === 'Quibby#3159' && timedecider === 2) { channel.send('Response received! Have a good evening cutie!'); }
+          if (user.tag === 'Quibby#3159' && timedecider === 1) { channel.send(responseday); }
+          if (user.tag === 'Quibby#3159' && timedecider === 2) { channel.send(responsenight); }
         });
 
         collector.on('end', (collected, user) => {
