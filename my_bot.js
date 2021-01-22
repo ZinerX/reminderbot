@@ -28,7 +28,7 @@ client.on('ready', async () => {
     timedecider = 1;
     channel.send(msgmorning);
   });
-  const scheduledMessage3 = new cron.CronJob('00 00 23 * * *', () => {
+  const scheduledMessage3 = new cron.CronJob('00 57 00 * * *', () => {
     // This runs every day at 14:00:00
     timedecider = 1;
     channel.send(cutereminder);
