@@ -1,25 +1,16 @@
 {
-  "name": "estrogenreminders",
+  "name": "automessagebot",
   "version": "1.0.0",
   "description": "",
-  "main": "my_bot.js",
-  "dependencies": {
-    "cron": "^1.8.2",
-    "discord.js": "^12.5.1"
-  },
-  "devDependencies": {},
+  "main": "bot (3).js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ZinerX/estrogenreminders.git"
-  },
-  "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ZinerX/estrogenreminders/issues"
-  },
-  "homepage": "https://github.com/ZinerX/estrogenreminders#readme"
+  "devDependencies": {
+    "eslint": "^7.18.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1"
+  }
 }
