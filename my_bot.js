@@ -12,7 +12,8 @@ const {
 const botSecretToken = 'Nzk0MTYzMDI5OTE3ODI3MTE0.X-2z9Q.WyM16r4rJDz6aAqsfTy64YpkXUM';
 let timedecider = 0;
 let channel;
-var feeded = false
+var feeded = 0
+var poked = 0
 const prefix = '!'
 
 client.on('ready', async () => {
@@ -36,7 +37,7 @@ client.on('ready', async () => {
   let hungrymsg = new cron.CronJob('00 00 23 * * *', () => {
     // This runs every day at 14:00:00
     channel.send(hungry)
-    feeded = false
+    feeded = 0;
   });
   scheduledMessage1.start();
   scheduledMessage2.start();
@@ -44,27 +45,34 @@ client.on('ready', async () => {
   hungrymsg.start();
 });
 
-const filter = (reaction) => (reaction.emoji.name === '👍');
+const filter1 = (reaction) => (reaction.emoji.name === '👍');
+const filter2 = (reaction) => (reaction.message.author.id === '234108953297027073');
 
 const checkMessageContains = () => {
-  channel.send(cutethingy[Math.floor(Math.random() * 4)])
+  if (poked === 0){
+    channel.send(cutethingy[Math.floor(Math.random() * 4)])
     .then((newMessage) => {
       const collector = newMessage.createReactionCollector(filter, { time: 1800000 });
       collector.on('collect', (reaction, user) => {
         console.log(`Collected ${reaction.emoji.name} from ${user.tag}`);
         checkMessageContains();
-      });
-      collector.on('end', (collected, user) => {
+       });
+       collector.on('end', (collected, user) => {
         console.log(`Collected ${collected.size} items`);
       });
     });
+  }
+  else {
+    channel.send('n--nya! I know it\'s you!!! hmph!! But you\' cute so I don\'t mind~ >w<')
+    .then(() => poked = 0)
+  }
 };
 
 client.on('message', (message) => {
   if (message.channel.id !== '794163238425722881') return;
   if (message.author.bot) return;
   if (message.content === cutereminder) {
-    const collector = message.createReactionCollector(filter, { time: 1800000 });
+    const collector = message.createReactionCollector(filter2, { time: 1800000 });
     collector.on('collect', (reaction, user) => {
       console.log(`Collected ${reaction.emoji.name} from ${user.tag}`);
       channel.send(cutethingy[Math.floor(Math.random() * 4)]);
@@ -75,7 +83,7 @@ client.on('message', (message) => {
   }
 
   if (message.content === cutethingy[0] || message.content === cutethingy[1] || message.content === cutethingy[2] || message.content === cutethingy[3]) {
-    const collector = message.createReactionCollector(filter, { time: 1800000 });
+    const collector = message.createReactionCollector(filter2, { time: 1800000 });
     collector.on('collect', (reaction, user) => {
       console.log(`Collected ${reaction.emoji.name} from ${user.tag}`);
       channel.send(cutethingy[Math.floor(Math.random() * 4)]);
@@ -86,7 +94,7 @@ client.on('message', (message) => {
   }
 
   // FUNCTION LOOP HERE
-  if ((message.content.toLowerCase().includes('no') || message.content.toLowerCase().includes('deny') || message.content.toLowerCase().includes('false') || message.content.toLowerCase().includes("n't") || message.content.toLowerCase().includes(':x:')) && (message.author.id === "234108953297027073") ) {
+  if ((message.content.toLowerCase().includes('no') || message.content.toLowerCase().includes('deny') || message.content.toLowerCase().includes('false') || message.content.toLowerCase().includes("n't") || message.content.toLowerCase().includes(':x:')) && (message.author.id === "234108953297027073")) {
     checkMessageContains();
   }
 
@@ -94,7 +102,7 @@ client.on('message', (message) => {
   if (message.content === msgmorning || message.content === msgevening) {
     message.react('👍')
     .then((newMessage) => {
-      const collector = newMessage.createReactionCollector(filter, { time: 1800000 });
+      const collector = newMessage.createReactionCollector(filter1, { time: 1800000 });
       collector.on('collect', (reaction, user) => {
         console.log(`Collected ${reaction.emoji.name} from ${user.tag}`);
         if (user.tag === 'Quibby#3159' && timedecider === 1) { channel.send(responseday); }
@@ -115,7 +123,7 @@ client.on('message', (message) => {
   if (message.content === noresponses) {
     message.react('👍')
     .then((newMessage) => {
-      const collector = newMessage.createReactionCollector(filter, { time: 1800000 });
+      const collector = newMessage.createReactionCollector(filter1, { time: 1800000 });
       collector.on('collect', (reaction, user) => {
         console.log(`Collected ${reaction.emoji.name} from ${user.tag}`);
         if (user.tag === 'Quibby#3159' && timedecider === 1) { channel.send(responseday); }
@@ -124,7 +132,7 @@ client.on('message', (message) => {
       collector.on('end', (collected, user) => {
         console.log(`Collected ${collected.size} items`);
         if (collected.size === 0) {
-           channel.send(noresponses)
+          channel.send(noresponses)
           .then(() => {
             message.reactions.removeAll().catch((error) => console.error('Failed to clear reactions: ', error));
           });
@@ -133,18 +141,24 @@ client.on('message', (message) => {
     });
   }// second if ends here
 
+  //commands grouping
   if ((message.content.startsWith(prefix + "poke")) && (message.author.id === "234108953297027073")){
-    message.reply("myon!! who poked me!!! *looks around* <@234108953297027073> was that you???")
+    message.send("myon!! who poked me!!! *looks around* <@234108953297027073> was that you???")
+    poked = 1
   }
 
   if ((message.content.startsWith(prefix + "feed")) && (message.author.id === "234108953297027073")){
-    if (feeded = false) {
+    if (feeded = 0) {
       message.reply("omnomnom it's yum! thanks for feeding nya~")
-      .then(() => feeded = true)
+      .then(() => feeded = 1)
     }
     else message.reply("thanks but im full, i'll let you know when im hungry again!!! >w<")      
   }
 
+  if ((message.content.startsWith(prefix + "pat")) && (message.author.id === "234108953297027073")){
+    message.send("*climb on your lap and starts rolling* abababa your pats are so comfy~") 
+  }  
+  //commands grouping end
 });
 
 client.login(botSecretToken);
