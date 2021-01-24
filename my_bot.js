@@ -34,7 +34,7 @@ client.on('ready', async () => {
     timedecider = 1;
     channel.send(cutereminder);
   });
-  let hungrymsg = new cron.CronJob('00 00 23 * * *', () => {
+  const hungrymsg = new cron.CronJob('00 00 23 * * *', () => {
     // This runs every day at 23:00:00
     feeded = 0;
     channel.send(hungry);
@@ -46,7 +46,7 @@ client.on('ready', async () => {
 });
 
 const filter1 = (reaction) => (reaction.emoji.name === '👍');
-const filter2 = (reaction) => (reaction.message.author.id === '234108953297027073');
+const filter2 = (reaction) => (reaction.message.author.id != '234108953297027073');
 
 const checkMessageContains = () => {
   if (poked === 0){
