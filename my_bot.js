@@ -63,7 +63,7 @@ const checkMessageContains = () => {
     });
   }
   else {
-    channel.send('n--nya! I know it\'s you!!! hmph!! But you\' cute so I don\'t mind~ >w<')
+    channel.send('n--nya! I know it\'s you!!! hmph!! But you\'re cute so I don\'t mind~ >w<')
     .then(() => poked = 0)
   }
 };
@@ -94,7 +94,7 @@ client.on('message', (message) => {
   }
 
   // FUNCTION LOOP HERE
-  if ((message.content.toLowerCase().includes('no') || message.content.toLowerCase().includes('deny') || message.content.toLowerCase().includes('false') || message.content.toLowerCase().includes("n't") || message.content.toLowerCase().includes(':x:')) && (message.author.id === "236484253871767553")) {
+  if ((message.content.toLowerCase().includes('no') || message.content.toLowerCase().includes('deny') || message.content.toLowerCase().includes('false') || message.content.toLowerCase().includes("n't") || message.content.toLowerCase().includes(':x:')) && (message.author.id === "234108953297027073")) {
     checkMessageContains();
   }
 
@@ -142,7 +142,7 @@ client.on('message', (message) => {
   }// second if ends here
 
   //commands grouping
-  if ((message.content.startsWith(prefix + "poke")) /*&& (message.author.id === "234108953297027073")*/){
+  if ((message.content.startsWith(prefix + "poke")) && (message.author.id === "234108953297027073")){
     channel.send("myon!! who poked me!!! *looks around* <@234108953297027073> was that you???")
     poked = 1
   }
@@ -155,7 +155,7 @@ client.on('message', (message) => {
     else message.reply("thanks but im full, i'll let you know when im hungry again!!! >w<")      
   }
 
-  if ((message.content.startsWith(prefix + "pat"))/* && (message.author.id === "234108953297027073")*/){
+  if ((message.content.startsWith(prefix + "pat")) && (message.author.id === "234108953297027073")){
     channel.send("*climb on your lap and starts rolling* abababa your pats are so comfy~") 
   }  
   //commands grouping end
