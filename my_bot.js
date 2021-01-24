@@ -19,7 +19,7 @@ const prefix = '!'
 client.on('ready', async () => {
   channel = client.channels.cache.get('794163238425722881');
   console.log(`Connected as ${client.user.tag}`);
-  const scheduledMessage1 = new cron.CronJob('00 50 12 * * *', () => {
+  const scheduledMessage1 = new cron.CronJob('00 51 12 * * *', () => {
     // This runs every day at 10:00:00
     timedecider = 2;
     channel.send(msgevening);
