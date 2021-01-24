@@ -52,7 +52,7 @@ const checkMessageContains = () => {
   if (poked === 0){
     channel.send(cutethingy[Math.floor(Math.random() * 4)])
     .then((newMessage) => {
-      const collector = newMessage.createReactionCollector(filter, { time: 1800000 });
+      const collector = newMessage.createReactionCollector(filter2, { time: 1800000 });
       collector.on('collect', (reaction, user) => {
         console.log(`Collected ${reaction.emoji.name} from ${user.tag}`);
         checkMessageContains();
@@ -94,7 +94,7 @@ client.on('message', (message) => {
   }
 
   // FUNCTION LOOP HERE
-  if ((message.content.toLowerCase().includes('no') || message.content.toLowerCase().includes('deny') || message.content.toLowerCase().includes('false') || message.content.toLowerCase().includes("n't") || message.content.toLowerCase().includes(':x:'))/* && (message.author.id === "234108953297027073")*/) {
+  if ((message.content.toLowerCase().includes('no') || message.content.toLowerCase().includes('deny') || message.content.toLowerCase().includes('false') || message.content.toLowerCase().includes("n't") || message.content.toLowerCase().includes(':x:')) && (message.author.id === "236484253871767553")) {
     checkMessageContains();
   }
 
