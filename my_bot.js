@@ -143,7 +143,7 @@ client.on('message', (message) => {
 
   //commands grouping
   if ((message.content.startsWith(prefix + "poke")) /*&& (message.author.id === "234108953297027073")*/){
-    channel.message.send("myon!! who poked me!!! *looks around* <@234108953297027073> was that you???")
+    channel.send("myon!! who poked me!!! *looks around* <@234108953297027073> was that you???")
     poked = 1
   }
 
@@ -156,7 +156,7 @@ client.on('message', (message) => {
   }
 
   if ((message.content.startsWith(prefix + "pat"))/* && (message.author.id === "234108953297027073")*/){
-    channel.message.send("*climb on your lap and starts rolling* abababa your pats are so comfy~") 
+    channel.send("*climb on your lap and starts rolling* abababa your pats are so comfy~") 
   }  
   //commands grouping end
 });
