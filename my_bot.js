@@ -19,7 +19,7 @@ const prefix = '!'
 client.on('ready', async () => {
   channel = client.channels.cache.get('794163238425722881');
   console.log(`Connected as ${client.user.tag}`);
-  const scheduledMessage1 = new cron.CronJob('00 03 15 * * *', () => {
+  const scheduledMessage1 = new cron.CronJob('00 10 00 * * *', () => {
     // This runs every day at 10:00:00
     timedecider = 2;
     channel.send(msgevening);
@@ -35,9 +35,9 @@ client.on('ready', async () => {
     channel.send(cutereminder);
   });
   let hungrymsg = new cron.CronJob('00 00 23 * * *', () => {
-    // This runs every day at 14:00:00
-    channel.send(hungry)
+    // This runs every day at 23:00:00
     feeded = 0;
+    channel.send(hungry);
   });
   scheduledMessage1.start();
   scheduledMessage2.start();
@@ -71,7 +71,6 @@ const checkMessageContains = () => {
 client.on('message', (message) => {
   channel = client.channels.cache.get('794163238425722881')
   if (message.channel.id !== '794163238425722881') return;
-  if (message.author.bot) return;
   if (message.content === cutereminder) {
     const collector = message.createReactionCollector(filter2, { time: 1800000 });
     collector.on('collect', (reaction, user) => {
@@ -95,7 +94,7 @@ client.on('message', (message) => {
   }
 
   // FUNCTION LOOP HERE
-  if ((message.content.toLowerCase().includes('no') || message.content.toLowerCase().includes('deny') || message.content.toLowerCase().includes('false') || message.content.toLowerCase().includes("n't") || message.content.toLowerCase().includes(':x:')) && (message.author.id === "234108953297027073")) {
+  if ((message.content.toLowerCase().includes('no') || message.content.toLowerCase().includes('deny') || message.content.toLowerCase().includes('false') || message.content.toLowerCase().includes("n't") || message.content.toLowerCase().includes(':x:'))/* && (message.author.id === "234108953297027073")*/) {
     checkMessageContains();
   }
 
@@ -143,7 +142,7 @@ client.on('message', (message) => {
   }// second if ends here
 
   //commands grouping
-  if ((message.content.startsWith(prefix + "poke")) && (message.author.id === "234108953297027073")){
+  if ((message.content.startsWith(prefix + "poke")) /*&& (message.author.id === "234108953297027073")*/){
     message.send("myon!! who poked me!!! *looks around* <@234108953297027073> was that you???")
     poked = 1
   }
@@ -156,7 +155,7 @@ client.on('message', (message) => {
     else message.reply("thanks but im full, i'll let you know when im hungry again!!! >w<")      
   }
 
-  if ((message.content.startsWith(prefix + "pat")) && (message.author.id === "234108953297027073")){
+  if ((message.content.startsWith(prefix + "pat"))/* && (message.author.id === "234108953297027073")*/){
     message.send("*climb on your lap and starts rolling* abababa your pats are so comfy~") 
   }  
   //commands grouping end
