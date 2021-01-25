@@ -147,8 +147,8 @@ client.on('message', (message) => {
     poked = 1
   }
 
-  if ((message.content.startsWith(prefix + "feed")) && (message.author.id === "234108953297027073")){
-    if (feeded = 0) {
+  if ((message.content.startsWith(prefix + "feed")) /*&& (message.author.id === "234108953297027073")*/){
+    if (feeded === 0) {
       message.reply("omnomnom it's yum! thanks for feeding nya~")
       .then(() => feeded = 1)
     }
