@@ -94,7 +94,7 @@ client.on('message', (message) => {
   }
 
   // FUNCTION LOOP HERE
-  if ((message.content.toLowerCase().includes('no') || message.content.toLowerCase().includes('deny') || message.content.toLowerCase().includes('false') || message.content.toLowerCase().includes("n't") || message.content.toLowerCase().includes(':x:') || message.content.toLowerCase().includes('n o')) && (message.author.id === "234108953297027073")) {
+  if ((message.content.toLowerCase().includes('no') || message.content.toLowerCase().includes('deny') || message.content.toLowerCase().includes('false') || message.content.toLowerCase().includes("n't") || message.content.toLowerCase().includes('x') || message.content.toLowerCase().includes('n o')) && (message.author.id === "234108953297027073")) {
     checkMessageContains();
   }
 
