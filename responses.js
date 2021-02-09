@@ -1,8 +1,8 @@
-const msgmorning = 'Good morning! It\'s now time to take your estrogen~ @Quibby, Click the 👍 emote if you have done so owo'
-const msgevening = 'Good evening! It\'s now time to take your estrogen~ @Quibby, Click the 👍 emote if you have done so owo'
+const msgmorning = 'Good morning! It\'s now time to take your estrogen~ <@234108953297027073>, Click the 👍 emote if you have done so owo'
+const msgevening = 'Good evening! It\'s now time to take your estrogen~ <@234108953297027073>, Click the 👍 emote if you have done so owo'
 const responseday = 'Response received! Have a good day cutie!'
 const responsenight = 'Response received! Have a good evening cutie!'
-const noresponses = 'No responses, I will remind you in another 30 minutes~ @Quibby Click the 👍 emote if you have taken your estrogen owo'
+const noresponses = 'No responses, I will remind you in another 30 minutes~ <@234108953297027073> Click the 👍 emote if you have taken your estrogen owo'
 const cutereminder = 'daily reminder!!! attention all of you!!! i am here to say that <@234108953297027073> is cute! very cute!!!'
 const hungry = '<@234108953297027073> rawrrrr i am hungryyyyy feed me gasolineeeeeee!!!!!!!!!'
 const cutethingy = [
