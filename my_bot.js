@@ -19,22 +19,22 @@ const prefix = '!'
 client.on('ready', async () => {
   channel = client.channels.cache.get('794163238425722881');
   console.log(`Connected as ${client.user.tag}`);
-  const scheduledMessage1 = new cron.CronJob('00 00 10 * * *', () => {
+  const scheduledMessage1 = new cron.CronJob('00 00 09 * * *', () => {
     // This runs every day at 10:00:00
     timedecider = 2;
     channel.send(msgevening);
   });
-  const scheduledMessage2 = new cron.CronJob('00 00 22 * * *', () => {
+  const scheduledMessage2 = new cron.CronJob('00 00 21 * * *', () => {
     // This runs every day at 22:00:00
     timedecider = 1;
     channel.send(msgmorning);
   });
-  const scheduledMessage3 = new cron.CronJob('00 00 14 * * *', () => {
+  const scheduledMessage3 = new cron.CronJob('00 00 13 * * *', () => {
     // This runs every day at 14:00:00
     timedecider = 1;
     channel.send(cutereminder);
   });
-  const hungrymsg = new cron.CronJob('00 00 23 * * *', () => {
+  const hungrymsg = new cron.CronJob('00 00 22 * * *', () => {
     // This runs every day at 23:00:00
     feeded = 0;
     channel.send(hungry);
