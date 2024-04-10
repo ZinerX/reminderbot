@@ -9,7 +9,7 @@ const {
   msgmorning, msgevening, noresponses, cutethingy, cutereminder, responseday, responsenight, hungry,
 } = require('./responses');
 
-const botSecretToken = 'Nzk0MTYzMDI5OTE3ODI3MTE0.X-2z9Q.WyM16r4rJDz6aAqsfTy64YpkXUM';
+const botSecretToken = '';
 let timedecider = 0;
 let channel;
 var feeded = 0
